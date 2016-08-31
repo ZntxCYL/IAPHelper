@@ -8,7 +8,7 @@ module.exports = {
 	        cc.log(err);
 	    }
 	},
-
+	
 	// 恢复购买（OC调用，传回商品ID列表）
 	restorePurchasesEnd: function (ids) {
 	    try {
