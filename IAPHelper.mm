@@ -66,12 +66,13 @@
 
 // 恢复购买完成
 - (void)paymentQueueRestoreCompletedTransactionsFinished: (SKPaymentQueue *) queue {
-	// 将商品ID用逗号分隔连接成字符串
+    // 将商品ID用逗号分隔连接成字符串
     NSString *ids = [productIds componentsJoinedByString:@","];
     // 需要调用的JS函数：require('SDKHelpers').restorePurchasesEnd 是引用 SDKHelpers.js 文件里的 restorePurchasesEnd 函数  ('%@') 就是把商品ID当初参数传递过去
     NSString *function = [NSString stringWithFormat: @"require('SDKHelpers').restorePurchasesEnd('%@')", ids];
     // 转为C风格字符串
     const char *stringFunc = [function UTF8String];
+    // outVal 是js函数的返回值，这里我们可以不管它
     jsval *outVal;
     // OC调用JS，传回商品ID
     ScriptingCore::getInstance()->evalString(stringFunc, outVal);
