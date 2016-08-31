@@ -2,7 +2,7 @@ module.exports = {
 	// 恢复购买（调用OC静态函数）
 	restorePurchasesStart: function () {
 	    try {
-	        // 使用原生去查找已购买的商品，然后再传回JS
+	        // 使用原生去查找已购买的商品，然后再传回JS：第一个参数 IAPHelper 是类名，第二个参数 restorePurchases 是OC的静态函数名
 	        jsb.reflection.callStaticMethod("IAPHelper", "restorePurchases");
 	    } catch (err) {
 	        cc.log(err);
